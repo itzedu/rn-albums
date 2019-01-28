@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { FlatList } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
@@ -14,18 +14,12 @@ export default class AlbumList extends Component {
       .then(response => this.setState({ albums: response.data }));
   }
 
-  renderAlbums() {
-    return this.state.albums.map(album => 
-      <AlbumDetail key={album.title} album={album} />
-    );
-  }
-
   render() {
-    console.log(this.state);
     return (
-      <View>
-        {this.renderAlbums()}
-      </View>
+      <FlatList 
+        data={this.state.albums} 
+        renderItem={({ item }) => <AlbumDetail key={item.title} album={item} />}
+      />
     );
   }
 }
