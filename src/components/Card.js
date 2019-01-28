@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 
 const Card = (props) => {
   const { containerStyle } = styles;
+  
   return (
     <View style={containerStyle}>
       {props.children}
